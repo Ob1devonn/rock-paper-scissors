@@ -9,14 +9,27 @@
 <body>
     <script>
         //declare strings rock paper and scissors globally
-        const list = ['Rock', 'Paper', 'Scissors']
+        const list = ['rock', 'paper', 'scissors'];
+
+
 
         //create random string generator
         function computerPlay() {
             word = list[Math.floor(Math.random()*list.length)];
             return word;
         }
-    
+        
+        //write a input for player to place their weapon of choice
+        function playerPlay() {
+            
+            c = prompt("Choose Rock, Paper, or Scissors");
+            choice = c.toLowerCase();
+            return choice;
+
+        }
+        //place a variable to accept outputs for computer and player
+        let playerSelection = playerPlay();
+        let computerSelection = computerPlay();
     </script>
 </body>
 </html>
