@@ -8,6 +8,10 @@
 </head>
 <body>
     <script>
+        //define a global score board and write a conditional statement for when player wins and to add to score
+        let computerScore = 0, playerScore = 0;
+        
+
         //declare strings rock paper and scissors globally
         const list = ['rock', 'paper', 'scissors'];
         const choice = function(s) {
@@ -15,6 +19,7 @@
             return s.toLowerCase();
        }
 
+       //write a checkVal for playerSelection to make sure it's a valid choice
 
 
         //create random string generator
@@ -27,19 +32,17 @@
      
         //function for a round of rock, paper, scissors
         function playRound(playerSelection, computerSelection) { 
-            ((playerSelection == 'rock') && (computerSelection == 'scissors') ? console.log('You win! Rock beats Paper'):
-            (playerSelection == 'scissors') && (computerSelection == 'paper')? console.log('You win! Scissors beats Paper'):
-            (playerSelection == 'paper') && (computerSelection == 'rock') ? console.log('You win! Paper beats Rock'):
-            (computerSelection == 'rock') && (playerSelection == 'scissors') ? console.log('You lose! Rock beats Paper'):
-            (computerSelection == 'scissors') && (playerSelection == 'paper') ? console.log('You lose! Scissors beats Paper'):
-            (computerSelection == 'paper') && (playerSelection == 'rock') ? console.log('You lose! Paper beats Rock'):
-            (computerSelection == playerSelection) ? console.log("It's a Tie!"):
-            console.log('Pick from 3'));
-            return;
+            (computerSelection == playerSelection) ? console.log("It's a tie!"):
+            ((computerSelection == 'rock') && (playerSelection == 'scissors')) ||
+            ((computerSelection == 'scissors') && (playerSelection == 'paper')) ||
+            ((computerSelection == 'paper') && (playerSelection == 'rock')) ? (console.log(`You Lose! ${computerSelection} beats ${playerSelection}`), computerScore = ++computerScore):
+            (console.log(`You Win! ${playerSelection} beats ${computerSelection}`), playerScore = ++playerScore) ;
+            
         }
-        playRound(playerSelection, computerSelection)
-        /*function game() {
-            for (let i = 0, i < 5, i++) {
+        playRound(playerSelection, computerSelection);
+        //function for tracking rounds played and victor of round
+      /*  function game() {
+            for (let i = 0; i < 5; i++) {
                 alert("Round: " + i);
                 playRound(playerSelection, computerSelection);
             }
