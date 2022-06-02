@@ -10,6 +10,10 @@
     <script>
         //declare strings rock paper and scissors globally
         const list = ['rock', 'paper', 'scissors'];
+        const choice = function(s) {
+            s = prompt("Type Rock, Paper, or Scissors", "Type here...");
+            return s.toLowerCase();
+       }
 
 
 
@@ -18,18 +22,31 @@
             word = list[Math.floor(Math.random()*list.length)];
             return word;
         }
-        
-        //write a input for player to place their weapon of choice
-        function playerPlay() {
-            
-            c = prompt("Choose Rock, Paper, or Scissors");
-            choice = c.toLowerCase();
-            return choice;
-
+       let computerSelection = computerPlay();
+       let playerSelection = choice();
+     
+        //function for a round of rock, paper, scissors
+        function playRound(playerSelection, computerSelection) { 
+            ((playerSelection == 'rock') && (computerSelection == 'scissors') ? console.log('You win! Rock beats Paper'):
+            (playerSelection == 'scissors') && (computerSelection == 'paper')? console.log('You win! Scissors beats Paper'):
+            (playerSelection == 'paper') && (computerSelection == 'rock') ? console.log('You win! Paper beats Rock'):
+            (computerSelection == 'rock') && (playerSelection == 'scissors') ? console.log('You lose! Rock beats Paper'):
+            (computerSelection == 'scissors') && (playerSelection == 'paper') ? console.log('You lose! Scissors beats Paper'):
+            (computerSelection == 'paper') && (playerSelection == 'rock') ? console.log('You lose! Paper beats Rock'):
+            (computerSelection == playerSelection) ? console.log("It's a Tie!"):
+            console.log('Pick from 3'));
+            return;
         }
-        //place a variable to accept outputs for computer and player
-        let playerSelection = playerPlay();
-        let computerSelection = computerPlay();
+        playRound(playerSelection, computerSelection)
+        /*function game() {
+            for (let i = 0, i < 5, i++) {
+                alert("Round: " + i);
+                playRound(playerSelection, computerSelection);
+            }
+        }
+        game();
+        */
+
     </script>
 </body>
 </html>
