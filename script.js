@@ -3,21 +3,25 @@ const winners = [];
 const list = ['rock', 'paper', 'scissors'];
 
 
-function playRound(playerSelection, computerSelection){
-    playerSelection = playerChoice();
-    computerSelection = computerChoice();
-    console.log(computerSelection,' comp');
-    console.log(playerSelection, ' player');
+function playRound(round){
+    const playerSelection = playerChoice();
+    const computerSelection = computerChoice();
     //check winner and store for later
     const winner = checkWinner(playerSelection, computerSelection);
-    //Write a function for displaying score
+    //push round winner to winner[]
+    winners.push(winner);
+    console.log(winners);
+    
     //write a function for logging the winner of each round and display who won game
+    logRound(playerSelection, computerSelection, winner, round);
+    console.log('---------------------------------------------');
 }
 
 function game(i){
-    for(i = 1; i < 5; i++){
+    for(i = 1; i < 6; i++){
     playRound(i);
-    }
+    }//Write a function for displaying score at end
+    logWins();
 }
 //create random selector for computer
 function computerChoice(){
@@ -54,4 +58,33 @@ function checkWinner(x, y){
     return victor;
 }
 
+function logWins(){
+    //use output values from winners[] to filter individual scores
+    let playerWins = winners.filter((item) => item =='Player').length;
+    let computerWins = winners.filter((item) => item =='Computer').length;
+    let ties = winners.filter((item) => item =='Tie').length;
+    let gameWonBy = gameWinner(playerWins, computerWins, ties);
+    console.log('Results are:');
+    console.log('Your wins: ', playerWins);
+    console.log('Computer wins: ',computerWins);
+    console.log('Ties: ',ties);
+    console.log(gameWonBy);
+
+}
+
+function logRound(playerSelection, computerSelection, winner, round){
+    console.log('Round: ', round);
+    console.log('Player picked: ',playerSelection);
+    console.log('Computer picked: ', computerSelection);
+    console.log(winner, ': Won this round');
+    
+}
+//Function for overall winner
+function gameWinner(playerWins, computerWins, ties){
+     let wonBy = 
+    (playerWins > computerWins && playerWins > ties) ? 'Player Wins the Game!':
+    (computerWins > playerWins && computerWins > ties) ? 'Computer Wins the Game!':
+    'It was a TIE';
+   return wonBy;
+}
 game();
