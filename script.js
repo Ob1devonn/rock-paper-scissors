@@ -10,23 +10,29 @@ function playRound(playerSelection, computerSelection){
     console.log(playerSelection, ' player');
     //check winner and store for later
     const winner = checkWinner(playerSelection, computerSelection);
-    console.log(winner);
+    //Write a function for displaying score
+    //write a function for logging the winner of each round and display who won game
 }
 
-function game(){
-    playRound();
+function game(i){
+    for(i = 1; i < 5; i++){
+    playRound(i);
+    }
 }
 //create random selector for computer
 function computerChoice(){
     return list[Math.floor(Math.random()*list.length)];
 }
 //get and validate player's choice
-function playerChoice(input){
-    input = prompt('Type Rock, Paper, or Scissors');
+function playerChoice(){
+    let input = prompt('Type Rock, Paper, or Scissors');
+    if(input === null){
+        return playerChoice();
+    }
     input = input.toLowerCase();
-    validate = validateX(input);
-    while(validate === false){
-        return playerChoice(input);
+    let validate = validateX(input);
+    while(validate === false){ 
+        return validate = playerChoice();
     }
     return input;
 }
@@ -44,9 +50,8 @@ function checkWinner(x, y){
     ((x == 'rock' && y == 'scissors')||
     (x == 'paper' && y == 'rock')||
     (x == 'scissors' && y == 'paper')) ?  'Player' :
-     'Computer');
-     console.log('victor', victor);
-     return victor;
+    'Computer');
+    return victor;
 }
 
 game();
