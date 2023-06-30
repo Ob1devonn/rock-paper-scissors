@@ -7,49 +7,6 @@
     <title>Rock, Paper, Scissors</title>
 </head>
 <body>
-    <script>
-        //define a global score board and write a conditional statement for when player wins and to add to score
-        let computerScore = 0, playerScore = 0;
-        
-
-        //declare strings rock paper and scissors globally
-        const list = ['rock', 'paper', 'scissors'];
-        const choice = function(s) {
-            s = prompt("Type Rock, Paper, or Scissors", "Type here...");
-            return s.toLowerCase();
-       }
-
-       //write a checkVal for playerSelection to make sure it's a valid choice
-
-
-        //create random string generator
-        function computerPlay() {
-            word = list[Math.floor(Math.random()*list.length)];
-            return word;
-        }
-       let computerSelection = computerPlay();
-       let playerSelection = choice();
-     
-        //function for a round of rock, paper, scissors
-        function playRound(playerSelection, computerSelection) { 
-            (computerSelection == playerSelection) ? console.log("It's a tie!"):
-            ((computerSelection == 'rock') && (playerSelection == 'scissors')) ||
-            ((computerSelection == 'scissors') && (playerSelection == 'paper')) ||
-            ((computerSelection == 'paper') && (playerSelection == 'rock')) ? (console.log(`You Lose! ${computerSelection} beats ${playerSelection}`), computerScore = ++computerScore):
-            (console.log(`You Win! ${playerSelection} beats ${computerSelection}`), playerScore = ++playerScore) ;
-            
-        }
-        playRound(playerSelection, computerSelection);
-        //function for tracking rounds played and victor of round
-      /*  function game() {
-            for (let i = 0; i < 5; i++) {
-                alert("Round: " + i);
-                playRound(playerSelection, computerSelection);
-            }
-        }
-        game();
-        */
-
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
