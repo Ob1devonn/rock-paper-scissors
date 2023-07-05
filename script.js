@@ -2,6 +2,10 @@ const wins = [];
 const rock = document.getElementById('rock');
 const paper = document.getElementById('paper');
 const scissors = document.getElementById('scissors');
+
+
+
+
 function getComputerChoice(){
     let choices = ['rock', 'paper', 'scissors'];
     let choice = choices[Math.floor(Math.random() * 3)];
@@ -29,8 +33,14 @@ function game(){
     let computerScore = 0;
     for(let round = 1; round <= 5; round++){
         const computerSelection = getComputerChoice();
-        const playerSelection;
-        
+        /*const playerSelection = 
+        function (){
+            if(
+
+            );
+        }
+        */
+
         const result = playRound(playerSelection, computerSelection);
         console.log(`Round ${round} : ${result}`);
         console.log('---------------------------------------------------');
@@ -52,3 +62,13 @@ function game(){
 }
 
 game();
+
+/*function selections (e){
+            e.addEventListener('click',()=>{
+                playerSelection = e.textContent.toLowerCase();
+                console.log(playerSelection);
+            });
+        }
+        selections(rock);
+        selections(paper);
+        selections(scissors); */
