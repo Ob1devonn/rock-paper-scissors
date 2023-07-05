@@ -1,12 +1,8 @@
 const wins = [];
-const rock = document.getElementById('rock');
-const paper = document.getElementById('paper');
-const scissors = document.getElementById('scissors');
 function getComputerChoice(){
     let choices = ['rock', 'paper', 'scissors'];
     let choice = choices[Math.floor(Math.random() * 3)];
     return choice;
-    
 }
 
 
@@ -29,7 +25,9 @@ function game(){
     let computerScore = 0;
     for(let round = 1; round <= 5; round++){
         const computerSelection = getComputerChoice();
-        const playerSelection;
+        /*const playerSelection =
+            if()
+        */
         
         const result = playRound(playerSelection, computerSelection);
         console.log(`Round ${round} : ${result}`);
