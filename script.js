@@ -1,52 +1,38 @@
-const wins = [];
-function getComputerChoice(){
-    let choices = ['rock', 'paper', 'scissors'];
-    let choice = choices[Math.floor(Math.random() * 3)];
-    return choice;
-}
+ // Add event listeners to the buttons
+ document.getElementById("rock").addEventListener("click", function() {
+    playGame("rock");
+  });
 
+  document.getElementById("paper").addEventListener("click", function() {
+    playGame("paper");
+  });
 
-function playRound(userChoice, computerChoice){
-    if(userChoice === computerChoice){
-        return "It's a tie!";
-    }else if (
-        (userChoice === "rock" && computerChoice === "scissors") ||
-        (userChoice === "paper" && computerChoice === "rock") ||
-        (userChoice === "scissors" && computerChoice === "paper")
-        ){
-            return `You win!`;
-        }else {
-            return `Computer Wins!`;
-        } 
-    }
-    
-function game(){
-    let userScore = 0;
-    let computerScore = 0;
-    for(let round = 1; round <= 5; round++){
-        const computerSelection = getComputerChoice();
-        /*const playerSelection =
-            if()
-        */
-        
-        const result = playRound(playerSelection, computerSelection);
-        console.log(`Round ${round} : ${result}`);
-        console.log('---------------------------------------------------');
-        if(result === 'You win!'){
-            userScore++;
-        }else if (result === 'Computer Wins!'){
-            computerScore++;
-        }
+  document.getElementById("scissors").addEventListener("click", function() {
+    playGame("scissors");
+  });
+
+  // Function to play the game
+  function playGame(playerChoice) {
+    // Generate a random choice for the computer
+    var choices = ["rock", "paper", "scissors"];
+    var computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+    // Determine the winner
+    var result;
+    if (playerChoice === computerChoice) {
+      result = "It's a tie!";
+    } else if (
+      (playerChoice === "rock" && computerChoice === "scissors") ||
+      (playerChoice === "paper" && computerChoice === "rock") ||
+      (playerChoice === "scissors" && computerChoice === "paper")
+    ) {
+      result = "You win!";
+    } else {
+      result = "Computer wins!";
     }
 
-    console.log(`Final Score: You:${userScore} Computer:${computerScore}`);
-    if(userScore > computerScore){
-        console.log("You win the game!");
-    } else if(computerScore > userScore){
-        console.log("Computer wins the game!");
-    } else{
-        console.log ("The game was a Tie!!!");
-    }
-}
-
-game();
+    // Display the results
+    console.log("Player chose: " + playerChoice);
+    console.log("Computer chose: " + computerChoice);
+    console.log("Result: " + result);
+  }
